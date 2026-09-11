@@ -1,0 +1,6 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="400" height="400" viewBox="0 0 400 400" fill="none">
+  <rect width="400" height="400" fill="#EDE9DE"/>
+  <rect x="120" y="80" width="160" height="240" rx="12" fill="#143D2D" opacity="0.15"/>
+  <circle cx="200" cy="160" r="40" fill="#2D6A4F" opacity="0.2"/>
+  <text x="200" y="340" text-anchor="middle" font-family="system-ui,sans-serif" font-size="14" fill="#143D2D" opacity="0.5">Fungtional Wellness</text>
+</svg>
