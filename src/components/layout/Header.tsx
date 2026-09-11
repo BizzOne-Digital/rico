@@ -27,8 +27,6 @@ export function Header() {
   const [searchOpen, setSearchOpen] = useState(false);
   const totalItems = useCartStore((s) => s.totalItems());
   const toggleCart = useCartStore((s) => s.toggleCart);
-  const isHome = pathname === "/";
-
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 40);
     onScroll();
@@ -50,13 +48,11 @@ export function Header() {
     if (q?.trim()) router.push(`/shop?search=${encodeURIComponent(q.trim())}`);
   };
 
-  const transparent = isHome && !scrolled;
-
   return (
     <header
       className={cn(
-        "transition-all duration-500",
-        transparent ? "bg-transparent" : "glass-dark"
+        "glass-dark transition-all duration-500",
+        scrolled && "shadow-[0_4px_24px_rgba(0,0,0,0.25)]"
       )}
     >
       <div className="mx-auto flex w-full max-w-[1400px] min-w-0 items-center justify-between gap-2 px-3 py-3 sm:gap-4 sm:px-5 sm:py-4 lg:px-10 lg:py-5">

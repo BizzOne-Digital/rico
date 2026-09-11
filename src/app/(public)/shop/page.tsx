@@ -97,7 +97,7 @@ export default async function ShopPage({ searchParams }: ShopPageProps) {
             <p className="mb-6 text-sm text-botanical">
               Showing {products.length} of {pagination.total} products
             </p>
-            <ProductGrid products={products} columns={2} />
+            <ProductGrid products={products} columns={3} />
 
             {pagination.pages > 1 && (
               <div className="mt-8 flex justify-center gap-2">
