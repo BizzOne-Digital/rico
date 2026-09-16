@@ -34,8 +34,8 @@ export default async function BookingPage() {
         </p>
       </PageHero>
 
-      <section className="mx-auto w-full min-w-0 max-w-2xl px-4 py-8 sm:px-6 sm:py-10">
-        <div className="rounded-2xl border border-soft-ivory bg-warm-white p-6 md:p-8 shadow-lg">
+      <section className="bg-page mx-auto w-full min-w-0 max-w-2xl px-4 py-8 sm:px-6 sm:py-10">
+        <div className="surface-card rounded-2xl p-6 md:p-8 shadow-lg">
           <BookingForm services={serviceData.length > 0 ? serviceData : [{ title: "Wellness Assessment" }, { title: "Personal Optimization" }]} />
         </div>
       </section>

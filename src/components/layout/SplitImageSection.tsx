@@ -23,7 +23,7 @@ export function SplitImageSection({
     <section
       className={cn(
         "section-spacing",
-        dark ? "bg-obsidian text-warm-white" : "bg-warm-white",
+        dark ? "bg-obsidian text-warm-white" : "bg-carbon text-warm-white",
         className
       )}
     >
@@ -35,7 +35,7 @@ export function SplitImageSection({
           </div>
           <div className="absolute -bottom-3 -right-3 hidden h-24 w-24 rounded-full border border-electric/30 bg-electric/10 blur-xl sm:block" aria-hidden />
         </div>
-        <div className={cn("min-w-0", reverse && "lg:order-1")}>{children}</div>
+        <div className={cn("min-w-0 content-on-dark", reverse && "lg:order-1")}>{children}</div>
       </div>
     </section>
   );

@@ -10,8 +10,10 @@
   --electric: #55C878;
   --burnt-orange: #F05A28;
   --metallic-silver: #C8C9C7;
-  --background: var(--warm-white);
-  --foreground: var(--obsidian);
+  --background: var(--obsidian);
+  --foreground: var(--warm-white);
+  --surface: var(--carbon);
+  --surface-elevated: #161a18;
   --site-header-height: 148px;
 }
 
@@ -125,7 +127,30 @@ body {
 }
 
 .bg-gradient-section {
-  background: linear-gradient(180deg, var(--warm-white) 0%, var(--soft-ivory) 100%);
+  background: linear-gradient(180deg, var(--carbon) 0%, var(--obsidian) 100%);
+}
+
+.bg-page {
+  background-color: var(--carbon);
+  color: var(--warm-white);
+}
+
+.surface-card {
+  background-color: var(--surface-elevated);
+  border: 1px solid rgba(45, 106, 79, 0.35);
+}
+
+.content-on-dark h1,
+.content-on-dark h2,
+.content-on-dark h3,
+.content-on-dark h4 {
+  color: var(--warm-white);
+}
+
+.content-on-dark p,
+.content-on-dark li,
+.content-on-dark dd {
+  color: var(--metallic-silver);
 }
 
 .glow-green {

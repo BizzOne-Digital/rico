@@ -32,8 +32,8 @@ export function ShopFilters({ categories }: ShopFiltersProps) {
   );
 
   return (
-    <div className="w-full min-w-0 space-y-4 rounded-2xl border border-soft-ivory bg-warm-white p-4 sm:p-6">
-      <h2 className="text-xs font-semibold uppercase tracking-[0.15em] text-deep-forest">Filters</h2>
+    <div className="surface-card w-full min-w-0 space-y-4 rounded-2xl p-4 sm:p-6">
+      <h2 className="text-xs font-semibold uppercase tracking-[0.15em] text-electric">Filters</h2>
 
       <Input
         label="Search"

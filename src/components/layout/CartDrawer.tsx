@@ -32,16 +32,16 @@ export function CartDrawer() {
             animate={{ x: 0 }}
             exit={{ x: "100%" }}
             transition={{ type: "spring", damping: 30, stiffness: 300 }}
-            className="fixed right-0 top-0 z-[61] flex h-full w-full max-w-md flex-col bg-warm-white shadow-2xl"
+            className="fixed right-0 top-0 z-[61] flex h-full w-full max-w-md flex-col border-l border-deep-forest/50 bg-[#161a18] text-warm-white shadow-2xl"
             role="dialog"
             aria-label="Shopping cart"
           >
-            <div className="flex items-center justify-between border-b border-soft-ivory px-6 py-4">
-              <h2 className="font-serif text-xl text-deep-forest">Your Cart</h2>
+            <div className="flex items-center justify-between border-b border-deep-forest/50 px-6 py-4">
+              <h2 className="font-serif text-xl text-warm-white">Your Cart</h2>
               <button
                 type="button"
                 onClick={() => setCartOpen(false)}
-                className="rounded-full p-2 text-deep-forest hover:bg-soft-ivory"
+                className="rounded-full p-2 text-warm-white hover:bg-deep-forest/40"
                 aria-label="Close cart"
               >
                 <X size={20} />
@@ -55,7 +55,7 @@ export function CartDrawer() {
                 <ul className="space-y-4">
                   {items.map((item) => (
                     <li key={item.productId} className="flex gap-4">
-                      <div className="relative h-20 w-20 shrink-0 overflow-hidden rounded-xl bg-soft-ivory">
+                      <div className="relative h-20 w-20 shrink-0 overflow-hidden rounded-xl bg-obsidian">
                         <ProductImage
                           src={item.image}
                           alt={item.name}
@@ -67,16 +67,16 @@ export function CartDrawer() {
                         <Link
                           href={`/shop/${item.slug}`}
                           onClick={() => setCartOpen(false)}
-                          className="font-medium text-deep-forest hover:text-botanical"
+                          className="font-medium text-warm-white hover:text-electric"
                         >
                           {item.name}
                         </Link>
-                        <p className="text-sm text-botanical">{formatPriceDollars(item.price)}</p>
+                        <p className="text-sm text-metallic-silver">{formatPriceDollars(item.price)}</p>
                         <div className="mt-2 flex items-center gap-2">
                           <button
                             type="button"
                             onClick={() => updateQuantity(item.productId, item.quantity - 1)}
-                            className="rounded-full border border-soft-ivory p-1 hover:bg-soft-ivory"
+                            className="rounded-full border border-deep-forest/60 p-1 hover:border-electric"
                             aria-label="Decrease quantity"
                           >
                             <Minus size={14} />
@@ -85,7 +85,7 @@ export function CartDrawer() {
                           <button
                             type="button"
                             onClick={() => updateQuantity(item.productId, item.quantity + 1)}
-                            className="rounded-full border border-soft-ivory p-1 hover:bg-soft-ivory"
+                            className="rounded-full border border-deep-forest/60 p-1 hover:border-electric"
                             aria-label="Increase quantity"
                           >
                             <Plus size={14} />
@@ -107,10 +107,10 @@ export function CartDrawer() {
             </div>
 
             {items.length > 0 && (
-              <div className="border-t border-soft-ivory px-6 py-4 space-y-4">
+              <div className="border-t border-deep-forest/50 px-6 py-4 space-y-4">
                 <div className="flex justify-between text-sm">
                   <span className="text-metallic-silver">Subtotal</span>
-                  <span className="font-semibold text-deep-forest">{formatPriceDollars(subtotal)}</span>
+                  <span className="font-semibold text-electric">{formatPriceDollars(subtotal)}</span>
                 </div>
                 <Link href="/checkout" onClick={() => setCartOpen(false)}>
                   <Button className="w-full">Checkout</Button>

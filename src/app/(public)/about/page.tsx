@@ -140,8 +140,8 @@ export default async function AboutPage() {
 
       <SplitImageSection image={PAGE_IMAGES.mushroomExtracts} alt="Mushroom extracts and powders">
         <p className="text-xs uppercase tracking-[0.22em] text-electric">Who We Are</p>
-        <h2 className="mt-3 font-serif text-3xl text-deep-forest md:text-4xl">The Fungtional Vision</h2>
-        <div className="mt-6 space-y-4 text-botanical leading-relaxed">
+        <h2 className="mt-3 font-serif text-3xl text-warm-white md:text-4xl">The Fungtional Vision</h2>
+        <div className="mt-6 space-y-4 text-metallic-silver leading-relaxed">
           <p>
             Fungtional Labs Inc. created {BRAND.name} because we believed functional mushroom
             wellness shouldn&apos;t feel complicated, clinical or out of reach. We set out to build
@@ -151,7 +151,7 @@ export default async function AboutPage() {
           <p>
             From Cordyceps and Lion&apos;s Mane capsules to alcohol-free oral drops, versatile
             powders, Myco Dose beverages and Myco Mist sprays, every product is rooted in the same
-            promise: <strong className="font-medium text-deep-forest">100% full fruiting body mushrooms</strong> —
+            promise: <strong className="font-medium text-warm-white">100% full fruiting body mushrooms</strong> —
             no mycelium, no fillers.
           </p>
         </div>
@@ -161,7 +161,7 @@ export default async function AboutPage() {
             "Capsules, drops, powders, beverages & sprays",
             "Wellness assessments & personal optimization",
           ].map((item) => (
-            <li key={item} className="flex items-start gap-3 text-sm text-deep-forest">
+            <li key={item} className="flex items-start gap-3 text-sm text-warm-white/90">
               <Check size={16} className="mt-0.5 shrink-0 text-electric" />
               {item}
             </li>
@@ -198,11 +198,11 @@ export default async function AboutPage() {
         </div>
       </section>
 
-      <section className="section-spacing bg-warm-white">
+      <section className="section-spacing bg-carbon">
         <div className="mx-auto w-full min-w-0 max-w-7xl px-4 sm:px-6">
           <ScrollReveal className="mx-auto max-w-2xl text-center">
             <p className="text-xs uppercase tracking-[0.22em] text-botanical">From Forest to Routine</p>
-            <h2 className="mt-3 font-serif text-3xl text-deep-forest md:text-4xl">
+            <h2 className="mt-3 font-serif text-3xl text-warm-white md:text-4xl">
               How We Build Every Product
             </h2>
           </ScrollReveal>
@@ -218,8 +218,8 @@ export default async function AboutPage() {
                     />
                   )}
                   <span className="font-serif text-4xl text-electric/30">{item.step}</span>
-                  <h3 className="mt-2 font-serif text-xl text-deep-forest">{item.title}</h3>
-                  <p className="mt-3 text-sm leading-relaxed text-botanical">{item.description}</p>
+                  <h3 className="mt-2 font-serif text-xl text-warm-white">{item.title}</h3>
+                  <p className="mt-3 text-sm leading-relaxed text-metallic-silver">{item.description}</p>
                 </div>
               </ScrollReveal>
             ))}
@@ -229,18 +229,18 @@ export default async function AboutPage() {
 
       <ImageBanner image={PAGE_IMAGES.hero} alt="Fungtional Wellness lifestyle" height="md" />
 
-      <section className="section-spacing bg-soft-ivory">
+      <section className="section-spacing bg-obsidian">
         <div className="mx-auto w-full min-w-0 max-w-7xl px-4 sm:px-6">
           <ScrollReveal className="flex flex-col items-start justify-between gap-4 sm:flex-row sm:items-end">
             <div>
               <p className="text-xs uppercase tracking-[0.22em] text-botanical">The Collection</p>
-              <h2 className="mt-2 font-serif text-3xl text-deep-forest md:text-4xl">
+              <h2 className="mt-2 font-serif text-3xl text-warm-white md:text-4xl">
                 Products & Services
               </h2>
             </div>
             <Link
               href="/shop"
-              className="inline-flex items-center gap-2 text-sm font-medium uppercase tracking-wider text-deep-forest transition-colors hover:text-botanical"
+              className="inline-flex items-center gap-2 text-sm font-medium uppercase tracking-wider text-electric transition-colors hover:text-warm-white"
             >
               View full shop
               <ArrowRight size={14} />
@@ -252,7 +252,7 @@ export default async function AboutPage() {
               <ScrollReveal key={item.title} delay={i * 0.06}>
                 <Link
                   href={item.href}
-                  className="group flex h-full flex-col overflow-hidden rounded-2xl bg-warm-white shadow-[0_8px_30px_rgba(8,10,9,0.08)] transition-all hover:-translate-y-1 hover:shadow-[0_16px_40px_rgba(8,10,9,0.12)]"
+                  className="group flex h-full flex-col overflow-hidden rounded-2xl border border-deep-forest/50 bg-[#161a18] shadow-[0_8px_30px_rgba(0,0,0,0.35)] transition-all hover:-translate-y-1 hover:border-electric/30"
                 >
                   <div className="relative aspect-[16/10] overflow-hidden">
                     <Image
@@ -268,10 +268,10 @@ export default async function AboutPage() {
                     </span>
                   </div>
                   <div className="flex flex-1 flex-col p-5">
-                    <h3 className="font-serif text-xl text-deep-forest group-hover:text-botanical transition-colors">
+                    <h3 className="font-serif text-xl text-warm-white group-hover:text-electric transition-colors">
                       {item.title}
                     </h3>
-                    <p className="mt-2 flex-1 text-sm leading-relaxed text-botanical">
+                    <p className="mt-2 flex-1 text-sm leading-relaxed text-metallic-silver">
                       {item.description}
                     </p>
                     <span className="mt-4 inline-flex items-center gap-1 text-xs font-medium uppercase tracking-wider text-electric">
@@ -345,10 +345,10 @@ export default async function AboutPage() {
         </div>
       </SplitImageSection>
 
-      <section className="mx-auto w-full min-w-0 max-w-4xl px-4 py-10 sm:px-6 sm:py-12">
-        <ScrollReveal className="rounded-2xl border border-soft-ivory bg-soft-ivory/50 p-6 md:p-8">
-          <h3 className="font-serif text-xl text-deep-forest md:text-2xl">Our Commitment to You</h3>
-          <p className="mt-4 text-sm leading-relaxed text-botanical">{settings.medicalDisclaimer}</p>
+      <section className="bg-page mx-auto w-full min-w-0 max-w-4xl px-4 py-10 sm:px-6 sm:py-12">
+        <ScrollReveal className="surface-card rounded-2xl p-6 md:p-8">
+          <h3 className="font-serif text-xl text-warm-white md:text-2xl">Our Commitment to You</h3>
+          <p className="mt-4 text-sm leading-relaxed text-metallic-silver">{settings.medicalDisclaimer}</p>
         </ScrollReveal>
       </section>
 

@@ -60,7 +60,7 @@ export function CartContent() {
   if (items.length === 0) {
     return (
       <div className="py-12 text-center">
-        <p className="text-botanical">Your cart is empty.</p>
+        <p className="text-metallic-silver">Your cart is empty.</p>
         <Link href="/shop" className="mt-6 inline-block">
           <Button>Continue Shopping</Button>
         </Link>
@@ -73,21 +73,21 @@ export function CartContent() {
       <div>
         <ul className="space-y-4">
           {items.map((item) => (
-            <li key={item.productId} className="flex gap-4 rounded-2xl border border-soft-ivory bg-warm-white p-4">
-              <div className="relative h-24 w-24 shrink-0 overflow-hidden rounded-xl bg-soft-ivory">
+            <li key={item.productId} className="surface-card flex gap-4 rounded-2xl p-4">
+              <div className="relative h-24 w-24 shrink-0 overflow-hidden rounded-xl bg-obsidian">
                 <ProductImage src={item.image} alt={item.name} fill sizes="96px" />
               </div>
               <div className="flex flex-1 flex-col">
-                <Link href={`/shop/${item.slug}`} className="font-medium text-deep-forest hover:text-botanical">
+                <Link href={`/shop/${item.slug}`} className="font-medium text-warm-white hover:text-electric">
                   {item.name}
                 </Link>
-                <p className="text-sm text-botanical">{formatPriceDollars(item.price)}</p>
-                <div className="mt-2 flex items-center gap-2">
-                  <button type="button" onClick={() => updateQuantity(item.productId, item.quantity - 1)} className="rounded-full border p-1">
+                <p className="text-sm text-metallic-silver">{formatPriceDollars(item.price)}</p>
+                <div className="mt-2 flex items-center gap-2 text-warm-white">
+                  <button type="button" onClick={() => updateQuantity(item.productId, item.quantity - 1)} className="rounded-full border border-deep-forest/60 p-1 hover:border-electric">
                     <Minus size={14} />
                   </button>
                   <span className="w-6 text-center text-sm">{item.quantity}</span>
-                  <button type="button" onClick={() => updateQuantity(item.productId, item.quantity + 1)} className="rounded-full border p-1">
+                  <button type="button" onClick={() => updateQuantity(item.productId, item.quantity + 1)} className="rounded-full border border-deep-forest/60 p-1 hover:border-electric">
                     <Plus size={14} />
                   </button>
                   <button type="button" onClick={() => removeItem(item.productId)} className="ml-auto text-burnt-orange">
@@ -95,31 +95,31 @@ export function CartContent() {
                   </button>
                 </div>
               </div>
-              <p className="font-semibold text-deep-forest">{formatPriceDollars(item.price * item.quantity)}</p>
+              <p className="font-semibold text-electric">{formatPriceDollars(item.price * item.quantity)}</p>
             </li>
           ))}
         </ul>
       </div>
 
       <div className="space-y-6">
-        <div className="rounded-2xl border border-soft-ivory bg-warm-white p-6">
-          <h2 className="font-serif text-xl text-deep-forest">Order Summary</h2>
-          <div className="mt-4 flex justify-between text-sm">
-            <span className="text-botanical">Subtotal</span>
+        <div className="surface-card rounded-2xl p-6">
+          <h2 className="font-serif text-xl text-warm-white">Order Summary</h2>
+          <div className="mt-4 flex justify-between text-sm text-warm-white">
+            <span className="text-metallic-silver">Subtotal</span>
             <span className="font-semibold">{formatPriceDollars(subtotal)}</span>
           </div>
           <p className="mt-2 text-xs text-metallic-silver">Shipping and tax calculated at checkout</p>
         </div>
 
-        <div className="rounded-2xl border border-soft-ivory bg-warm-white p-6 space-y-4">
-          <h3 className="font-medium text-deep-forest">Customer Information</h3>
+        <div className="surface-card rounded-2xl p-6 space-y-4">
+          <h3 className="font-medium text-warm-white">Customer Information</h3>
           <Input label="Full Name" value={customer.name} onChange={(e) => setCustomer({ ...customer, name: e.target.value })} required />
           <Input label="Email" type="email" value={customer.email} onChange={(e) => setCustomer({ ...customer, email: e.target.value })} required />
           <Input label="Phone" type="tel" value={customer.phone} onChange={(e) => setCustomer({ ...customer, phone: e.target.value })} />
         </div>
 
-        <div className="rounded-2xl border border-soft-ivory bg-warm-white p-6 space-y-4">
-          <h3 className="font-medium text-deep-forest">Shipping Address</h3>
+        <div className="surface-card rounded-2xl p-6 space-y-4">
+          <h3 className="font-medium text-warm-white">Shipping Address</h3>
           <Input label="Address" value={shipping.address} onChange={(e) => setShipping({ ...shipping, address: e.target.value })} required />
           <div className="grid grid-cols-2 gap-4">
             <Input label="City" value={shipping.city} onChange={(e) => setShipping({ ...shipping, city: e.target.value })} required />

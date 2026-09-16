@@ -73,7 +73,7 @@ export default async function ProductPage({ params }: ProductPageProps) {
   };
 
   return (
-    <div className="page-shell page-offset">
+    <div className="page-shell page-offset bg-page">
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(structuredData) }}
@@ -81,8 +81,8 @@ export default async function ProductPage({ params }: ProductPageProps) {
       <ProductDetailClient product={product} disclaimer={disclaimer} />
 
       {related.length > 0 && (
-        <section className="mx-auto max-w-7xl px-4 py-10 md:px-6">
-          <h2 className="font-serif text-2xl text-deep-forest md:text-3xl">Related Products</h2>
+        <section className="mx-auto max-w-7xl px-4 py-10 sm:px-6">
+          <h2 className="font-serif text-2xl text-warm-white md:text-3xl">Related Products</h2>
           <div className="mt-8">
             <ProductGrid products={related} columns={4} />
           </div>

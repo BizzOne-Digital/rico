@@ -28,14 +28,14 @@ export function BenefitExplorer({ products, className }: BenefitExplorerProps) {
   const displayProducts = filteredProducts.slice(0, 3);
 
   return (
-    <section className={cn("section-spacing bg-warm-white", className)}>
+    <section className={cn("section-spacing bg-obsidian", className)}>
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         <ScrollReveal>
           <div className="mb-10 text-center">
             <p className="text-xs font-semibold tracking-[0.2em] uppercase text-electric">
               Benefit Explorer
             </p>
-            <h2 className="mt-3 font-serif text-3xl text-deep-forest sm:text-4xl">
+            <h2 className="mt-3 font-serif text-3xl text-warm-white sm:text-4xl">
               What Do You Need Today?
             </h2>
           </div>
@@ -54,7 +54,7 @@ export function BenefitExplorer({ products, className }: BenefitExplorerProps) {
                     "rounded-full px-4 py-2.5 text-xs font-semibold tracking-[0.08em] uppercase transition-all duration-300",
                     active
                       ? "bg-deep-forest text-electric shadow-[0_0_20px_rgba(85,200,120,0.2)]"
-                      : "border border-soft-ivory bg-soft-ivory/50 text-botanical hover:border-botanical hover:text-deep-forest"
+                      : "border border-deep-forest/60 bg-carbon text-metallic-silver hover:border-electric hover:text-warm-white"
                   )}
                 >
                   {benefit}

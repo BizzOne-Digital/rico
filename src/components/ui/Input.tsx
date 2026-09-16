@@ -16,7 +16,7 @@ export const Input = forwardRef<HTMLInputElement, InputProps>(
         {label ? (
           <label
             htmlFor={inputId}
-            className="block text-sm font-medium tracking-wide text-[#143D2D]"
+            className="block text-sm font-medium tracking-wide text-warm-white/90"
           >
             {label}
             {required ? <span className="ml-1 text-[#F05A28]">*</span> : null}
@@ -32,19 +32,19 @@ export const Input = forwardRef<HTMLInputElement, InputProps>(
             error ? `${inputId}-error` : hint ? `${inputId}-hint` : undefined
           }
           className={cn(
-            "flex h-11 w-full rounded-xl border bg-[#F5F3EC] px-4 text-sm text-[#080A09]",
-            "placeholder:text-[#C8C9C7] transition-colors duration-200",
-            "focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#55C878] focus-visible:ring-offset-2 focus-visible:ring-offset-[#F5F3EC]",
+            "flex h-11 w-full rounded-xl border bg-obsidian px-4 text-sm text-warm-white",
+            "placeholder:text-metallic-silver/60 transition-colors duration-200",
+            "focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-electric focus-visible:ring-offset-2 focus-visible:ring-offset-[#161a18]",
             error
-              ? "border-[#F05A28] focus-visible:ring-[#F05A28]"
-              : "border-[#EDE9DE] hover:border-[#C8C9C7]",
+              ? "border-burnt-orange focus-visible:ring-burnt-orange"
+              : "border-deep-forest/60 hover:border-electric/40",
             className
           )}
           {...props}
         />
 
         {hint && !error ? (
-          <p id={`${inputId}-hint`} className="text-xs text-[#2D6A4F]">
+          <p id={`${inputId}-hint`} className="text-xs text-metallic-silver">
             {hint}
           </p>
         ) : null}

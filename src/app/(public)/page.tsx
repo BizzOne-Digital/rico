@@ -57,14 +57,14 @@ export default async function HomePage() {
       <CategoryShowcase categories={categories} />
       <FeaturedProducts products={featuredProducts} />
       <SplitImageSection image={PAGE_IMAGES.mushroomExtracts} alt="Functional mushroom products">
-        <h2 className="font-serif text-3xl text-deep-forest md:text-4xl">Optimized Living Story</h2>
-        <p className="mt-4 text-lg leading-relaxed text-botanical">
+        <h2 className="font-serif text-3xl md:text-4xl">Optimized Living Story</h2>
+        <p className="mt-4 text-lg leading-relaxed">
           Fungtional Labs Inc. created Fungtional Wellness to make the benefits of functional and
           gourmet mushrooms accessible through clean, natural and thoughtfully developed products.
         </p>
         <Link
           href="/about"
-          className="mt-6 inline-flex h-11 items-center justify-center rounded-full border border-botanical px-8 text-sm font-medium uppercase tracking-[0.06em] text-deep-forest transition-colors hover:bg-soft-ivory"
+          className="mt-6 inline-flex h-11 items-center justify-center rounded-full border border-electric/60 px-8 text-sm font-medium uppercase tracking-[0.06em] text-warm-white transition-colors hover:border-electric hover:bg-deep-forest/40"
         >
           Our Story
         </Link>

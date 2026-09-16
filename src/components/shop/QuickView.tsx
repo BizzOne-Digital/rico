@@ -20,18 +20,18 @@ export function QuickView({ product, open, onClose }: QuickViewProps) {
   return (
     <Modal open={open} onClose={onClose} title={product.name}>
       <div className="grid gap-6 md:grid-cols-2">
-        <div className="relative aspect-square overflow-hidden rounded-xl bg-soft-ivory">
+        <div className="relative aspect-square overflow-hidden rounded-xl bg-obsidian">
           <ProductImage src={image} alt={product.name} fill sizes="400px" />
         </div>
         <div>
-          <p className="text-2xl font-semibold text-deep-forest">
+          <p className="text-2xl font-semibold text-electric">
             {formatProductPrice(product.price, product.status)}
           </p>
           {product.shortDescription && (
-            <p className="mt-3 text-sm text-botanical leading-relaxed">{product.shortDescription}</p>
+            <p className="mt-3 text-sm text-metallic-silver leading-relaxed">{product.shortDescription}</p>
           )}
           {product.benefits && product.benefits.length > 0 && (
-            <ul className="mt-4 space-y-1 text-sm text-deep-forest">
+            <ul className="mt-4 space-y-1 text-sm text-warm-white/90">
               {product.benefits.map((b) => (
                 <li key={b}>• {b}</li>
               ))}
@@ -54,7 +54,7 @@ export function QuickView({ product, open, onClose }: QuickViewProps) {
             <Link
               href={`/shop/${product.slug}`}
               onClick={onClose}
-              className="inline-flex items-center text-sm uppercase tracking-wider text-burnt-orange hover:text-deep-forest"
+              className="inline-flex items-center text-sm uppercase tracking-wider text-electric hover:text-warm-white"
             >
               View Details →
             </Link>

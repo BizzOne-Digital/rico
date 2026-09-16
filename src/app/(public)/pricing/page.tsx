@@ -45,7 +45,7 @@ export default async function PricingPage() {
         <p className="mt-4 text-metallic-silver">Transparent pricing for products and services.</p>
       </PageHero>
 
-      <section className="mx-auto w-full min-w-0 max-w-7xl px-4 py-8 sm:px-6 sm:py-10">
+      <section className="bg-page content-on-dark mx-auto w-full min-w-0 max-w-7xl px-4 py-8 sm:px-6 sm:py-10">
         <div className="mb-10 grid gap-4 sm:grid-cols-3">
           {[PAGE_IMAGES.capsules, PAGE_IMAGES.oralDrops, PAGE_IMAGES.mycoMist].map((img, i) => (
             <div key={i} className="relative aspect-[16/10] overflow-hidden rounded-xl">
@@ -54,11 +54,11 @@ export default async function PricingPage() {
           ))}
         </div>
         <ScrollReveal>
-          <h2 className="font-serif text-2xl text-deep-forest">Catalogue Overview</h2>
+          <h2 className="font-serif text-2xl text-warm-white">Catalogue Overview</h2>
           <div className="mt-8 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
             {CATALOGUE_PRICING.map((item) => (
-              <div key={item.category} className="rounded-2xl border border-soft-ivory bg-warm-white p-6">
-                <h3 className="font-medium text-deep-forest">{item.category}</h3>
+              <div key={item.category} className="surface-card rounded-2xl p-6">
+                <h3 className="font-medium text-warm-white">{item.category}</h3>
                 <p className="mt-2 text-lg font-semibold text-electric">{item.price}</p>
               </div>
             ))}
@@ -66,11 +66,11 @@ export default async function PricingPage() {
         </ScrollReveal>
 
         <ScrollReveal className="mt-12">
-          <h2 className="font-serif text-2xl text-deep-forest">All Products</h2>
-          <div className="mt-8 w-full min-w-0 overflow-x-auto">
+          <h2 className="font-serif text-2xl text-warm-white">All Products</h2>
+          <div className="mt-8 w-full min-w-0 overflow-x-auto surface-card rounded-2xl p-4">
             <table className="w-full min-w-[520px] text-left text-sm">
               <thead>
-                <tr className="border-b border-soft-ivory text-xs uppercase tracking-wider text-botanical">
+                <tr className="border-b border-deep-forest/50 text-xs uppercase tracking-wider text-metallic-silver">
                   <th className="pb-3 pr-4">Product</th>
                   <th className="pb-3 pr-4">Category</th>
                   <th className="pb-3 pr-4">Format</th>
@@ -79,15 +79,15 @@ export default async function PricingPage() {
               </thead>
               <tbody>
                 {productData.map((p: { _id: string; name: string; slug: string; price: number; format?: string; status: string; category?: { name?: string } }) => (
-                  <tr key={p._id} className="border-b border-soft-ivory/50">
+                  <tr key={p._id} className="border-b border-deep-forest/30">
                     <td className="py-4 pr-4">
-                      <Link href={`/shop/${p.slug}`} className="font-medium text-deep-forest hover:text-botanical">
+                      <Link href={`/shop/${p.slug}`} className="font-medium text-warm-white hover:text-electric">
                         {p.name}
                       </Link>
                     </td>
-                    <td className="py-4 pr-4 text-botanical">{p.category?.name || "—"}</td>
-                    <td className="py-4 pr-4 text-botanical">{p.format || "—"}</td>
-                    <td className="py-4 font-semibold text-deep-forest">
+                    <td className="py-4 pr-4 text-metallic-silver">{p.category?.name || "—"}</td>
+                    <td className="py-4 pr-4 text-metallic-silver">{p.format || "—"}</td>
+                    <td className="py-4 font-semibold text-electric">
                       {formatProductPrice(p.price, p.status)}
                     </td>
                   </tr>
@@ -98,15 +98,15 @@ export default async function PricingPage() {
         </ScrollReveal>
 
         <ScrollReveal className="mt-12">
-          <h2 className="font-serif text-2xl text-deep-forest">Services</h2>
+          <h2 className="font-serif text-2xl text-warm-white">Services</h2>
           <div className="mt-8 grid gap-6 md:grid-cols-3">
             {serviceData.map((s: { _id: string; title: string; price?: number; duration?: string }) => (
-              <div key={s._id} className="rounded-2xl border border-soft-ivory bg-soft-ivory/30 p-6">
-                <h3 className="font-serif text-xl text-deep-forest">{s.title}</h3>
+              <div key={s._id} className="surface-card rounded-2xl p-6">
+                <h3 className="font-serif text-xl text-warm-white">{s.title}</h3>
                 <p className="mt-3 text-lg font-semibold text-electric">
                   {s.price ? formatPriceDollars(s.price) : "Contact for pricing"}
                 </p>
-                {s.duration && <p className="mt-1 text-sm text-botanical">{s.duration}</p>}
+                {s.duration && <p className="mt-1 text-sm text-metallic-silver">{s.duration}</p>}
               </div>
             ))}
           </div>

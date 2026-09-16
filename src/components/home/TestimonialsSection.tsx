@@ -27,14 +27,14 @@ export function TestimonialsSection({
   if (active.length === 0) return null;
 
   return (
-    <section className={cn("section-spacing bg-warm-white", className)}>
+    <section className={cn("section-spacing bg-carbon", className)}>
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         <ScrollReveal>
           <div className="mb-8 text-center">
             <p className="text-xs font-semibold tracking-[0.2em] uppercase text-electric">
               Testimonials
             </p>
-            <h2 className="mt-3 font-serif text-3xl text-deep-forest sm:text-4xl">
+            <h2 className="mt-3 font-serif text-3xl text-warm-white sm:text-4xl">
               What Our Community Says
             </h2>
           </div>
@@ -46,7 +46,7 @@ export function TestimonialsSection({
               <motion.blockquote
                 whileHover={{ y: -4 }}
                 transition={{ duration: 0.25 }}
-                className="flex h-full flex-col rounded-2xl border border-soft-ivory bg-soft-ivory/30 p-6"
+                className="flex h-full flex-col rounded-2xl border border-deep-forest/50 bg-[#161a18] p-6"
               >
                 <div className="flex gap-0.5">
                   {Array.from({ length: 5 }).map((_, i) => (
@@ -62,13 +62,13 @@ export function TestimonialsSection({
                   ))}
                 </div>
 
-                <p className="mt-4 flex-1 text-sm leading-relaxed text-botanical">
+                <p className="mt-4 flex-1 text-sm leading-relaxed text-metallic-silver">
                   &ldquo;{testimonial.content}&rdquo;
                 </p>
 
-                <footer className="mt-5 border-t border-soft-ivory pt-4">
+                <footer className="mt-5 border-t border-deep-forest/40 pt-4">
                   <cite className="not-italic">
-                    <span className="text-sm font-semibold text-deep-forest">
+                    <span className="text-sm font-semibold text-warm-white">
                       {testimonial.name}
                     </span>
                     {testimonial.role && (

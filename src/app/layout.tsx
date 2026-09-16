@@ -31,7 +31,7 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
       lang="en"
       className={`${dmSans.variable} ${playfair.variable} h-full antialiased`}
     >
-      <body className="site-root min-h-full w-full max-w-full overflow-x-clip flex flex-col bg-warm-white text-obsidian">
+      <body className="site-root min-h-full w-full max-w-full overflow-x-clip flex flex-col bg-obsidian text-warm-white">
         {children}
       </body>
     </html>

@@ -38,7 +38,7 @@ export const Select = forwardRef<HTMLSelectElement, SelectProps>(
         {label ? (
           <label
             htmlFor={selectId}
-            className="block text-sm font-medium tracking-wide text-[#143D2D]"
+            className="block text-sm font-medium tracking-wide text-warm-white/90"
           >
             {label}
             {required ? <span className="ml-1 text-[#F05A28]">*</span> : null}
@@ -55,12 +55,12 @@ export const Select = forwardRef<HTMLSelectElement, SelectProps>(
               error ? `${selectId}-error` : hint ? `${selectId}-hint` : undefined
             }
             className={cn(
-              "flex h-11 w-full appearance-none rounded-xl border bg-[#F5F3EC] px-4 pr-10 text-sm text-[#080A09]",
+              "flex h-11 w-full appearance-none rounded-xl border bg-obsidian px-4 pr-10 text-sm text-warm-white",
               "transition-colors duration-200",
-              "focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#55C878] focus-visible:ring-offset-2 focus-visible:ring-offset-[#F5F3EC]",
+              "focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-electric focus-visible:ring-offset-2 focus-visible:ring-offset-[#161a18]",
               error
-                ? "border-[#F05A28] focus-visible:ring-[#F05A28]"
-                : "border-[#EDE9DE] hover:border-[#C8C9C7]",
+                ? "border-burnt-orange focus-visible:ring-burnt-orange"
+                : "border-deep-forest/60 hover:border-electric/40",
               className
             )}
             {...props}
@@ -82,12 +82,12 @@ export const Select = forwardRef<HTMLSelectElement, SelectProps>(
           </select>
           <ChevronDown
             size={18}
-            className="pointer-events-none absolute right-3 top-1/2 -translate-y-1/2 text-[#2D6A4F]"
+            className="pointer-events-none absolute right-3 top-1/2 -translate-y-1/2 text-electric"
           />
         </div>
 
         {hint && !error ? (
-          <p id={`${selectId}-hint`} className="text-xs text-[#2D6A4F]">
+          <p id={`${selectId}-hint`} className="text-xs text-metallic-silver">
             {hint}
           </p>
         ) : null}

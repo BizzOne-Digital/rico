@@ -35,14 +35,14 @@ export function FeaturedProducts({
               <p className="text-xs font-semibold tracking-[0.2em] uppercase text-electric">
                 Best Sellers
               </p>
-              <h2 className="mt-3 font-serif text-3xl text-deep-forest sm:text-4xl">
+              <h2 className="mt-3 font-serif text-3xl text-warm-white sm:text-4xl">
                 {title}
               </h2>
-              <p className="mt-2 max-w-lg text-sm text-botanical">{subtitle}</p>
+              <p className="mt-2 max-w-lg text-sm text-metallic-silver">{subtitle}</p>
             </div>
             <Link
               href="/shop"
-              className="inline-flex items-center gap-1.5 text-xs font-semibold tracking-[0.1em] uppercase text-deep-forest transition-colors hover:text-electric"
+              className="inline-flex items-center gap-1.5 text-xs font-semibold tracking-[0.1em] uppercase text-warm-white transition-colors hover:text-electric"
             >
               View All
               <ArrowRight size={14} />

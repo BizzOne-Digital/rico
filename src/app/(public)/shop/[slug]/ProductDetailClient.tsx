@@ -46,10 +46,10 @@ export function ProductDetailClient({ product, disclaimer }: ProductDetailClient
   const canAdd = product.status === "active";
 
   return (
-    <div className="mx-auto w-full min-w-0 max-w-7xl px-4 sm:px-6">
+    <div className="mx-auto w-full min-w-0 max-w-7xl px-4 py-8 sm:px-6 sm:py-10">
       <div className="grid w-full min-w-0 gap-6 lg:grid-cols-2 lg:gap-8">
         <div>
-          <div className="relative aspect-square overflow-hidden rounded-2xl bg-soft-ivory">
+          <div className="relative aspect-square overflow-hidden rounded-2xl border border-deep-forest/40 bg-obsidian">
             <ProductImage src={mainImage} alt={product.name} fill sizes="(max-width: 1024px) 100vw, 50vw" priority />
           </div>
           {images.length > 1 && (
@@ -60,7 +60,7 @@ export function ProductDetailClient({ product, disclaimer }: ProductDetailClient
                   type="button"
                   onClick={() => setActiveImage(i)}
                   className={`relative h-20 w-20 shrink-0 overflow-hidden rounded-xl border-2 transition-colors ${
-                    i === activeImage ? "border-electric" : "border-soft-ivory"
+                    i === activeImage ? "border-electric" : "border-deep-forest/50"
                   }`}
                 >
                   <ProductImage src={img.url} alt={img.alt} fill sizes="80px" />
@@ -72,12 +72,12 @@ export function ProductDetailClient({ product, disclaimer }: ProductDetailClient
 
         <div>
           {product.category?.name && (
-            <span className="text-xs uppercase tracking-wider text-botanical">{product.category.name}</span>
+            <span className="text-xs uppercase tracking-wider text-electric">{product.category.name}</span>
           )}
-          <h1 className="mt-2 font-serif text-3xl text-deep-forest md:text-4xl">{product.name}</h1>
+          <h1 className="mt-2 font-serif text-3xl text-warm-white md:text-4xl">{product.name}</h1>
 
           <div className="mt-4 flex items-center gap-3">
-            <span className="text-2xl font-semibold text-deep-forest">
+            <span className="text-2xl font-semibold text-warm-white">
               {formatProductPrice(product.price, product.status)}
             </span>
             {product.status === "active" && product.compareAtPrice && product.compareAtPrice > product.price && (
@@ -90,33 +90,33 @@ export function ProductDetailClient({ product, disclaimer }: ProductDetailClient
           </div>
 
           {product.shortDescription && (
-            <p className="mt-4 text-botanical leading-relaxed">{product.shortDescription}</p>
+            <p className="mt-4 text-metallic-silver leading-relaxed">{product.shortDescription}</p>
           )}
 
           <dl className="mt-6 space-y-2 text-sm">
             {product.size && (
               <div className="flex gap-2">
-                <dt className="font-medium text-deep-forest">Size:</dt>
-                <dd className="text-botanical">{product.size}</dd>
+                <dt className="font-medium text-warm-white">Size:</dt>
+                <dd className="text-metallic-silver">{product.size}</dd>
               </div>
             )}
             {product.format && (
               <div className="flex gap-2">
-                <dt className="font-medium text-deep-forest">Format:</dt>
-                <dd className="text-botanical">{product.format}</dd>
+                <dt className="font-medium text-warm-white">Format:</dt>
+                <dd className="text-metallic-silver">{product.format}</dd>
               </div>
             )}
             {product.npn && (
               <div className="flex gap-2">
-                <dt className="font-medium text-deep-forest">NPN:</dt>
-                <dd className="text-botanical">{product.npn}</dd>
+                <dt className="font-medium text-warm-white">NPN:</dt>
+                <dd className="text-metallic-silver">{product.npn}</dd>
               </div>
             )}
           </dl>
 
           {product.benefits && product.benefits.length > 0 && (
             <div className="mt-6">
-              <h3 className="text-sm font-semibold uppercase tracking-wider text-deep-forest">Key Benefits</h3>
+              <h3 className="text-sm font-semibold uppercase tracking-wider text-electric">Key Benefits</h3>
               <ul className="mt-2 flex flex-wrap gap-2">
                 {product.benefits.map((b) => (
                   <li key={b}>
@@ -129,11 +129,11 @@ export function ProductDetailClient({ product, disclaimer }: ProductDetailClient
 
           {canAdd && (
             <div className="mt-8 flex items-center gap-4">
-              <div className="flex items-center rounded-full border border-soft-ivory">
+              <div className="flex items-center rounded-full border border-deep-forest/60">
                 <button
                   type="button"
                   onClick={() => setQuantity(Math.max(1, quantity - 1))}
-                  className="p-3 hover:bg-soft-ivory rounded-l-full"
+                  className="p-3 hover:bg-deep-forest/30 rounded-l-full"
                   aria-label="Decrease quantity"
                 >
                   <Minus size={16} />
@@ -142,7 +142,7 @@ export function ProductDetailClient({ product, disclaimer }: ProductDetailClient
                 <button
                   type="button"
                   onClick={() => setQuantity(quantity + 1)}
-                  className="p-3 hover:bg-soft-ivory rounded-r-full"
+                  className="p-3 hover:bg-deep-forest/30 rounded-r-full"
                   aria-label="Increase quantity"
                 >
                   <Plus size={16} />
@@ -167,34 +167,34 @@ export function ProductDetailClient({ product, disclaimer }: ProductDetailClient
 
           {product.description && (
             <div className="mt-10">
-              <h3 className="font-serif text-xl text-deep-forest">Description</h3>
-              <p className="mt-3 whitespace-pre-line text-sm text-botanical leading-relaxed">{product.description}</p>
+              <h3 className="font-serif text-xl text-warm-white">Description</h3>
+              <p className="mt-3 whitespace-pre-line text-sm text-metallic-silver leading-relaxed">{product.description}</p>
             </div>
           )}
 
           {product.ingredients && (
             <div className="mt-8">
-              <h3 className="font-serif text-xl text-deep-forest">Ingredients</h3>
-              <p className="mt-3 text-sm text-botanical leading-relaxed">{product.ingredients}</p>
+              <h3 className="font-serif text-xl text-warm-white">Ingredients</h3>
+              <p className="mt-3 text-sm text-metallic-silver leading-relaxed">{product.ingredients}</p>
             </div>
           )}
 
           {product.suggestedUse && (
             <div className="mt-8">
-              <h3 className="font-serif text-xl text-deep-forest">Suggested Use</h3>
-              <p className="mt-3 text-sm text-botanical leading-relaxed">{product.suggestedUse}</p>
+              <h3 className="font-serif text-xl text-warm-white">Suggested Use</h3>
+              <p className="mt-3 text-sm text-metallic-silver leading-relaxed">{product.suggestedUse}</p>
             </div>
           )}
 
           {product.warnings && (
             <div className="mt-8">
-              <h3 className="font-serif text-xl text-deep-forest">Warnings</h3>
-              <p className="mt-3 text-sm text-botanical leading-relaxed">{product.warnings}</p>
+              <h3 className="font-serif text-xl text-warm-white">Warnings</h3>
+              <p className="mt-3 text-sm text-metallic-silver leading-relaxed">{product.warnings}</p>
             </div>
           )}
 
-          <div className="mt-10 rounded-xl border border-soft-ivory bg-soft-ivory/50 p-6">
-            <p className="text-xs text-botanical leading-relaxed">{disclaimer}</p>
+          <div className="surface-card mt-10 rounded-xl p-6">
+            <p className="text-xs text-metallic-silver leading-relaxed">{disclaimer}</p>
           </div>
         </div>
       </div>

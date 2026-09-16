@@ -20,15 +20,15 @@ export default function ContactPage() {
         <p className="mt-4 text-metallic-silver">We&apos;d love to hear from you.</p>
       </PageHero>
 
-      <section className="mx-auto w-full min-w-0 max-w-7xl px-4 py-8 sm:px-6 sm:py-10">
+      <section className="bg-page mx-auto w-full min-w-0 max-w-7xl px-4 py-8 sm:px-6 sm:py-10">
         <div className="grid w-full min-w-0 gap-8 lg:grid-cols-2">
           <div>
-            <h2 className="font-serif text-2xl text-deep-forest">Get in Touch</h2>
+            <h2 className="font-serif text-2xl text-warm-white">Get in Touch</h2>
             <ul className="mt-8 space-y-6">
               <li className="flex items-start gap-4">
                 <Mail size={20} className="mt-1 text-electric shrink-0" />
                 <div>
-                  <p className="font-medium text-deep-forest">General Inquiries</p>
+                  <p className="font-medium text-warm-white">General Inquiries</p>
                   <a href={`mailto:${BRAND.email}`} className="text-sm text-botanical hover:text-electric">
                     {BRAND.email}
                   </a>
@@ -37,7 +37,7 @@ export default function ContactPage() {
               <li className="flex items-start gap-4">
                 <Mail size={20} className="mt-1 text-electric shrink-0" />
                 <div>
-                  <p className="font-medium text-deep-forest">Product Sales</p>
+                  <p className="font-medium text-warm-white">Product Sales</p>
                   <a href={`mailto:${BRAND.salesEmail}`} className="text-sm text-botanical hover:text-electric">
                     {BRAND.salesEmail}
                   </a>
@@ -46,7 +46,7 @@ export default function ContactPage() {
               <li className="flex items-start gap-4">
                 <Phone size={20} className="mt-1 text-electric shrink-0" />
                 <div>
-                  <p className="font-medium text-deep-forest">Phone</p>
+                  <p className="font-medium text-warm-white">Phone</p>
                   <a href={`tel:${BRAND.phone.replace(/\D/g, "")}`} className="text-sm text-botanical hover:text-electric">
                     {BRAND.phone}
                   </a>
@@ -55,7 +55,7 @@ export default function ContactPage() {
             </ul>
           </div>
 
-          <div className="rounded-2xl border border-soft-ivory bg-warm-white p-8 shadow-lg">
+          <div className="surface-card rounded-2xl p-8 shadow-lg">
             <ContactForm />
           </div>
         </div>

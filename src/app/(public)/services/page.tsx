@@ -38,7 +38,7 @@ export default async function ServicesPage() {
         </p>
       </PageHero>
 
-      <section className="mx-auto w-full min-w-0 max-w-7xl px-4 py-8 sm:px-6 sm:py-10">
+      <section className="bg-page content-on-dark mx-auto w-full min-w-0 max-w-7xl px-4 py-8 sm:px-6 sm:py-10">
         <div className="space-y-12">
           {data.map((service: {
             _id: string;
@@ -68,23 +68,23 @@ export default async function ServicesPage() {
                   </div>
                 </div>
                 <div className={i % 2 === 1 ? "lg:order-1" : ""}>
-                  <h2 className="font-serif text-3xl text-deep-forest">{service.title}</h2>
-                  <p className="mt-4 text-botanical leading-relaxed">{service.fullDescription || service.shortDescription}</p>
+                  <h2 className="font-serif text-3xl text-warm-white">{service.title}</h2>
+                  <p className="mt-4 text-metallic-silver leading-relaxed">{service.fullDescription || service.shortDescription}</p>
                   {service.benefits?.length > 0 && (
                     <ul className="mt-6 space-y-2">
                       {service.benefits.map((b: string) => (
-                        <li key={b} className="flex items-center gap-2 text-sm text-deep-forest">
+                        <li key={b} className="flex items-center gap-2 text-sm text-warm-white/90">
                           <Check size={16} className="text-electric shrink-0" />
                           {b}
                         </li>
                       ))}
                     </ul>
                   )}
-                  <div className="mt-6 flex flex-wrap items-center gap-4 text-sm text-botanical">
+                  <div className="mt-6 flex flex-wrap items-center gap-4 text-sm text-metallic-silver">
                     {service.price ? (
-                      <span className="font-semibold text-deep-forest">{formatPriceDollars(service.price)}</span>
+                      <span className="font-semibold text-electric">{formatPriceDollars(service.price)}</span>
                     ) : (
-                      <span className="font-semibold text-deep-forest">Contact for pricing</span>
+                      <span className="font-semibold text-electric">Contact for pricing</span>
                     )}
                     {service.duration && <span>• {service.duration}</span>}
                   </div>

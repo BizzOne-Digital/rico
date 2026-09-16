@@ -118,25 +118,25 @@ export function Modal({
         aria-labelledby={title ? titleId : undefined}
         aria-describedby={description ? descriptionId : undefined}
         className={cn(
-          "relative z-10 w-full rounded-2xl border border-[#2D6A4F]/30 bg-[#F5F3EC] shadow-2xl",
+          "relative z-10 w-full rounded-2xl border border-deep-forest/50 bg-[#161a18] text-warm-white shadow-2xl",
           "transition-all duration-200",
           sizeStyles[size],
           className
         )}
       >
         {(title || !hideCloseButton) && (
-          <div className="flex items-start justify-between gap-4 border-b border-[#EDE9DE] px-6 py-5">
+          <div className="flex items-start justify-between gap-4 border-b border-deep-forest/50 px-6 py-5">
             <div className="space-y-1">
               {title ? (
                 <h2
                   id={titleId}
-                  className="text-lg font-semibold tracking-tight text-[#143D2D]"
+                  className="text-lg font-semibold tracking-tight text-warm-white"
                 >
                   {title}
                 </h2>
               ) : null}
               {description ? (
-                <p id={descriptionId} className="text-sm text-[#2D6A4F]">
+                <p id={descriptionId} className="text-sm text-metallic-silver">
                   {description}
                 </p>
               ) : null}
@@ -146,7 +146,7 @@ export function Modal({
               <button
                 type="button"
                 onClick={onClose}
-                className="rounded-full p-2 text-[#143D2D] transition-colors hover:bg-[#EDE9DE] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#55C878]"
+                className="rounded-full p-2 text-warm-white transition-colors hover:bg-deep-forest/40 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-electric"
                 aria-label="Close dialog"
               >
                 <Close size={20} />

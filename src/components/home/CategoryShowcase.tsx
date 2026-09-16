@@ -25,14 +25,14 @@ export function CategoryShowcase({ categories, className }: CategoryShowcaseProp
   if (categories.length === 0) return null;
 
   return (
-    <section className={cn("section-spacing bg-warm-white", className)}>
+    <section className={cn("section-spacing bg-carbon", className)}>
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         <ScrollReveal>
           <div className="mb-8 text-center">
             <p className="text-xs font-semibold tracking-[0.2em] uppercase text-electric">
               Shop by Category
             </p>
-            <h2 className="mt-3 font-serif text-3xl text-deep-forest sm:text-4xl">
+            <h2 className="mt-3 font-serif text-3xl text-warm-white sm:text-4xl">
               Find Your Ritual
             </h2>
           </div>
@@ -44,7 +44,7 @@ export function CategoryShowcase({ categories, className }: CategoryShowcaseProp
               <motion.div whileHover={{ y: -6 }} transition={{ duration: 0.3 }}>
                 <Link
                   href={`/shop?category=${category.slug}`}
-                  className="group relative block overflow-hidden rounded-2xl border border-soft-ivory bg-soft-ivory/30"
+                  className="group relative block overflow-hidden rounded-2xl border border-deep-forest/50 bg-obsidian"
                 >
                   <div className="relative aspect-[4/3] overflow-hidden">
                     <ProductImage

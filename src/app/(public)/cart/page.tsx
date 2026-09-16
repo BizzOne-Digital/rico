@@ -20,7 +20,7 @@ export default function CartPage() {
         <p className="mt-3 text-metallic-silver">Review your selections and proceed to checkout.</p>
       </PageHero>
 
-      <section className="mx-auto max-w-7xl px-4 py-10 md:px-6">
+      <section className="bg-page mx-auto max-w-7xl px-4 py-10 md:px-6">
         <CartContent />
       </section>
     </div>

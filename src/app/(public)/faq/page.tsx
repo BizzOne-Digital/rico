@@ -25,7 +25,7 @@ export default async function FAQPage() {
         <p className="mt-4 text-metallic-silver">Answers to common questions about our products and services.</p>
       </PageHero>
 
-      <section className="mx-auto w-full min-w-0 max-w-3xl px-4 py-8 sm:px-6 sm:py-10">
+      <section className="bg-page mx-auto w-full min-w-0 max-w-3xl px-4 py-8 sm:px-6 sm:py-10">
         {data.length === 0 ? (
           <p className="text-center text-botanical">No FAQs available yet. Check back soon.</p>
         ) : (

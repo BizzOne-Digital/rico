@@ -87,6 +87,7 @@ export default async function ShopPage({ searchParams }: ShopPageProps) {
         </p>
       </PageHero>
 
+      <section className="bg-page">
       <div className="mx-auto w-full min-w-0 max-w-7xl px-4 py-8 sm:px-6 sm:py-10">
         <div className="grid w-full min-w-0 gap-6 lg:grid-cols-[260px_1fr] lg:gap-8">
           <Suspense fallback={<Skeleton className="h-96 rounded-2xl" />}>
@@ -94,7 +95,7 @@ export default async function ShopPage({ searchParams }: ShopPageProps) {
           </Suspense>
 
           <div>
-            <p className="mb-6 text-sm text-botanical">
+            <p className="mb-6 text-sm text-metallic-silver">
               Showing {products.length} of {pagination.total} products
             </p>
             <ProductGrid products={products} columns={3} />
@@ -109,8 +110,8 @@ export default async function ShopPage({ searchParams }: ShopPageProps) {
                       href={`/shop?${query.toString()}`}
                       className={`flex h-10 w-10 items-center justify-center rounded-full text-sm transition-colors ${
                         p === pagination.page
-                          ? "bg-deep-forest text-warm-white"
-                          : "border border-soft-ivory text-deep-forest hover:bg-soft-ivory"
+                          ? "bg-electric text-obsidian"
+                          : "border border-deep-forest/60 text-warm-white hover:border-electric"
                       }`}
                     >
                       {p}
@@ -122,6 +123,7 @@ export default async function ShopPage({ searchParams }: ShopPageProps) {
           </div>
         </div>
       </div>
+      </section>
     </div>
   );
 }

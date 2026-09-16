@@ -39,8 +39,8 @@ export function ProductCard({ product, onQuickView }: ProductCardProps) {
 
   return (
     <>
-      <article className="group flex flex-col overflow-hidden rounded-2xl border border-soft-ivory bg-warm-white transition-all hover:border-electric hover:shadow-lg">
-        <Link href={`/shop/${product.slug}`} className="relative aspect-square overflow-hidden bg-soft-ivory">
+      <article className="group flex flex-col overflow-hidden rounded-2xl border border-deep-forest/50 bg-[#161a18] transition-all hover:border-electric/50 hover:shadow-[0_12px_40px_rgba(0,0,0,0.45)]">
+        <Link href={`/shop/${product.slug}`} className="relative aspect-square overflow-hidden bg-obsidian">
           <ProductImage
             src={image}
             alt={product.name}
@@ -48,6 +48,7 @@ export function ProductCard({ product, onQuickView }: ProductCardProps) {
             sizes="(max-width: 768px) 50vw, 25vw"
             className="transition-transform duration-500 group-hover:scale-105"
           />
+          <div className="absolute inset-0 bg-gradient-to-t from-obsidian/40 via-transparent to-transparent" />
           {product.status === "out_of_stock" && (
             <Badge className="absolute left-3 top-3" variant="warning">Out of Stock</Badge>
           )}
@@ -57,14 +58,14 @@ export function ProductCard({ product, onQuickView }: ProductCardProps) {
         </Link>
         <div className="flex flex-1 flex-col p-3 sm:p-5">
           {product.category?.name && (
-            <span className="text-[10px] uppercase tracking-wider text-botanical">{product.category.name}</span>
+            <span className="text-[10px] uppercase tracking-wider text-electric">{product.category.name}</span>
           )}
           <Link href={`/shop/${product.slug}`}>
-            <h3 className="mt-1 font-serif text-base leading-snug text-deep-forest hover:text-botanical transition-colors sm:text-lg">
+            <h3 className="mt-1 font-serif text-base leading-snug text-warm-white transition-colors hover:text-electric sm:text-lg">
               {product.name}
             </h3>
           </Link>
-          <p className="mt-2 text-sm font-semibold text-deep-forest">
+          <p className="mt-2 text-sm font-semibold text-warm-white">
             {formatProductPrice(product.price, product.status)}
             {product.status === "active" && product.compareAtPrice && product.compareAtPrice > product.price && (
               <span className="ml-2 text-xs text-metallic-silver line-through">
@@ -96,7 +97,7 @@ export function ProductCard({ product, onQuickView }: ProductCardProps) {
             <button
               type="button"
               onClick={() => (onQuickView ? onQuickView(product) : setQuickViewOpen(true))}
-              className="w-full rounded-full border border-soft-ivory px-3 py-2 text-[10px] uppercase tracking-wider text-deep-forest hover:bg-soft-ivory transition-colors sm:w-auto sm:px-4 sm:text-xs"
+              className="w-full rounded-full border border-deep-forest px-3 py-2 text-[10px] uppercase tracking-wider text-warm-white transition-colors hover:border-electric hover:bg-deep-forest/30 sm:w-auto sm:px-4 sm:text-xs"
             >
               Quick View
             </button>
