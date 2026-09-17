@@ -2,6 +2,7 @@
  * Copies client WhatsApp product photos into public/images/products (and categories).
  * Run: npx tsx scripts/install-product-images.ts
  */
+import { execSync } from "child_process";
 import { copyFileSync, existsSync, mkdirSync } from "fs";
 import { resolve, join } from "path";
 
@@ -106,4 +107,7 @@ if (!existsSync(ASSETS_DIR)) {
 
 install(COPIES, PUBLIC_PRODUCTS);
 install(CATEGORY_COPIES, PUBLIC_CATEGORIES);
+
+execSync("tsx scripts/split-myco-mist-images.ts", { stdio: "inherit", cwd: process.cwd() });
+
 console.log("Product images installed.");

@@ -1,5 +1,12 @@
 /** Client product photography — paths under /public */
-export const PRODUCT_IMAGES: Record<string, { featured: string; gallery?: string[] }> = {
+export type ProductImageEntry = {
+  featured: string;
+  gallery?: string[];
+  /** Crop focal point when featured is the shared Myco Mist lineup */
+  objectPosition?: string;
+};
+
+export const PRODUCT_IMAGES: Record<string, ProductImageEntry> = {
   "cordyceps-capsules": {
     featured: "/images/products/cordyceps-capsules.jpg",
     gallery: ["/images/products/cordyceps-capsules-marketing.jpg"],
@@ -47,11 +54,28 @@ export const PRODUCT_IMAGES: Record<string, { featured: string; gallery?: string
   "myco-dose": {
     featured: "/images/products/myco-dose.jpg",
   },
-  "myco-mist-energy": { featured: "/images/products/myco-mist.jpg" },
-  "myco-mist-focus": { featured: "/images/products/myco-mist.jpg" },
-  "myco-mist-calm": { featured: "/images/products/myco-mist.jpg" },
-  "myco-mist-immune": { featured: "/images/products/myco-mist.jpg" },
-  "myco-mist-sleep": { featured: "/images/products/myco-mist.jpg" },
+  "myco-mist-energy": {
+    featured: "/images/products/myco-mist-energy.jpg",
+    gallery: ["/images/products/myco-mist.jpg"],
+  },
+  "myco-mist-focus": {
+    featured: "/images/products/myco-mist-focus.jpg",
+    gallery: ["/images/products/myco-mist.jpg"],
+  },
+  "myco-mist-calm": {
+    featured: "/images/products/myco-mist-calm.jpg",
+    gallery: ["/images/products/myco-mist.jpg"],
+  },
+  "myco-mist-immune": {
+    featured: "/images/products/myco-mist.jpg",
+    objectPosition: "68% 42%",
+    gallery: ["/images/products/myco-mist.jpg"],
+  },
+  "myco-mist-sleep": {
+    featured: "/images/products/myco-mist.jpg",
+    objectPosition: "90% 48%",
+    gallery: ["/images/products/myco-mist.jpg"],
+  },
 };
 
 export const CATEGORY_IMAGE_PATHS: Record<string, string> = {
@@ -69,4 +93,8 @@ export function productImageUrls(slug: string, name: string, categoryFallback: s
   const urls = [featured, ...(entry?.gallery ?? [])];
   const images = urls.map((url, order) => ({ url, alt: name, order }));
   return { featuredImage: featured, images };
+}
+
+export function productImageObjectPosition(slug: string): string | undefined {
+  return PRODUCT_IMAGES[slug]?.objectPosition;
 }

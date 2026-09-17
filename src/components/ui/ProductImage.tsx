@@ -8,14 +8,17 @@ export interface ProductImageProps extends Omit<ImageProps, "src" | "alt"> {
   src?: string | null;
   alt: string;
   fallbackSrc?: string;
+  objectPosition?: string;
 }
 
 export function ProductImage({
   src,
   alt,
   fallbackSrc = "/images/placeholder-product.svg",
+  objectPosition = "center",
   className,
   onError,
+  style,
   ...props
 }: ProductImageProps) {
   const [erroredSrc, setErroredSrc] = useState<string | null>(null);
@@ -29,6 +32,7 @@ export function ProductImage({
       src={displaySrc}
       alt={alt}
       className={cn("object-cover", className)}
+      style={{ ...style, objectPosition }}
       onError={(event) => {
         setErroredSrc(resolvedSrc);
         onError?.(event);

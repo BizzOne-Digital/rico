@@ -3,6 +3,7 @@
 import { useState } from "react";
 import { ProductImage } from "@/components/ui/ProductImage";
 import { Badge } from "@/components/ui/Badge";
+import { productImageObjectPosition } from "@/lib/product-images";
 import { formatProductPrice } from "@/lib/product-pricing";
 import { formatPriceDollars } from "@/lib/utils";
 import { AddToCartButton } from "@/components/shop/AddToCartButton";
@@ -43,6 +44,7 @@ export function ProductDetailClient({ product, disclaimer }: ProductDetailClient
   const [activeImage, setActiveImage] = useState(0);
   const [quantity, setQuantity] = useState(1);
   const mainImage = images[activeImage]?.url || product.featuredImage || "";
+  const objectPosition = productImageObjectPosition(product.slug);
   const canAdd = product.status === "active";
 
   return (
@@ -50,7 +52,14 @@ export function ProductDetailClient({ product, disclaimer }: ProductDetailClient
       <div className="grid w-full min-w-0 gap-6 lg:grid-cols-2 lg:gap-8">
         <div>
           <div className="relative aspect-square overflow-hidden rounded-2xl border border-deep-forest/40 bg-obsidian">
-            <ProductImage src={mainImage} alt={product.name} fill sizes="(max-width: 1024px) 100vw, 50vw" priority />
+            <ProductImage
+              src={mainImage}
+              alt={product.name}
+              fill
+              sizes="(max-width: 1024px) 100vw, 50vw"
+              objectPosition={objectPosition}
+              priority
+            />
           </div>
           {images.length > 1 && (
             <div className="mt-4 flex gap-3 overflow-x-auto scrollbar-hide">

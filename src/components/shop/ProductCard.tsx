@@ -4,6 +4,7 @@ import Link from "next/link";
 import { useState } from "react";
 import { ProductImage } from "@/components/ui/ProductImage";
 import { Badge } from "@/components/ui/Badge";
+import { productImageObjectPosition } from "@/lib/product-images";
 import { formatProductPrice } from "@/lib/product-pricing";
 import { formatPriceDollars } from "@/lib/utils";
 import { AddToCartButton } from "./AddToCartButton";
@@ -35,6 +36,7 @@ interface ProductCardProps {
 export function ProductCard({ product, onQuickView }: ProductCardProps) {
   const [quickViewOpen, setQuickViewOpen] = useState(false);
   const image = product.featuredImage || product.images?.[0]?.url || "";
+  const objectPosition = productImageObjectPosition(product.slug);
   const canAdd = product.status === "active";
 
   return (
@@ -46,6 +48,7 @@ export function ProductCard({ product, onQuickView }: ProductCardProps) {
             alt={product.name}
             fill
             sizes="(max-width: 768px) 50vw, 25vw"
+            objectPosition={objectPosition}
             className="transition-transform duration-500 group-hover:scale-105"
           />
           <div className="absolute inset-0 bg-gradient-to-t from-obsidian/40 via-transparent to-transparent" />
