@@ -8,6 +8,7 @@ import { hashPassword } from "../src/lib/auth";
 import { CATALOGUE_PRICES, PRODUCT_PRICES } from "../src/lib/product-pricing";
 import { slugify } from "../src/lib/utils";
 import { DEFAULT_ANNOUNCEMENT, DEFAULT_DISCLAIMER } from "../src/lib/constants";
+import { CATEGORY_IMAGE_PATHS, productImageUrls } from "../src/lib/product-images";
 
 async function seed() {
   const uri = process.env.MONGODB_URI;
@@ -44,12 +45,12 @@ async function seed() {
 
   // Categories
   const categories = [
-    { name: "Mushroom Capsules", slug: "mushroom-capsules", displayOrder: 1, image: "/images/capsules-jars.jpg" },
-    { name: "Mushroom Oral Drops", slug: "mushroom-oral-drops", displayOrder: 2, image: "/images/oral-drops.jpg" },
-    { name: "Mushroom Powders", slug: "mushroom-powders", displayOrder: 3, image: "/images/mushroom-powder.jpg" },
-    { name: "Beverages", slug: "beverages", displayOrder: 4, image: "/images/myco-dose.jpg" },
-    { name: "Myco Mist", slug: "myco-mist", displayOrder: 5, image: "/images/myco-mist.jpg" },
-    { name: "Product Development", slug: "product-development", displayOrder: 6, image: "/images/mushrooms-macro.jpg" },
+    { name: "Mushroom Capsules", slug: "mushroom-capsules", displayOrder: 1, image: CATEGORY_IMAGE_PATHS["mushroom-capsules"] },
+    { name: "Mushroom Oral Drops", slug: "mushroom-oral-drops", displayOrder: 2, image: CATEGORY_IMAGE_PATHS["mushroom-oral-drops"] },
+    { name: "Mushroom Powders", slug: "mushroom-powders", displayOrder: 3, image: CATEGORY_IMAGE_PATHS["mushroom-powders"] },
+    { name: "Beverages", slug: "beverages", displayOrder: 4, image: CATEGORY_IMAGE_PATHS.beverages },
+    { name: "Myco Mist", slug: "myco-mist", displayOrder: 5, image: CATEGORY_IMAGE_PATHS["myco-mist"] },
+    { name: "Product Development", slug: "product-development", displayOrder: 6, image: CATEGORY_IMAGE_PATHS["product-development"] },
   ];
 
   const categoryMap: Record<string, mongoose.Types.ObjectId> = {};
@@ -81,15 +82,6 @@ async function seed() {
     trackInventory?: boolean;
     shortDescription?: string;
     ingredients?: string;
-  };
-
-  const categoryImages: Record<string, string> = {
-    "mushroom-capsules": "/images/capsules-jars.jpg",
-    "mushroom-oral-drops": "/images/oral-drops.jpg",
-    "mushroom-powders": "/images/mushroom-powder.jpg",
-    beverages: "/images/myco-dose.jpg",
-    "myco-mist": "/images/myco-mist.jpg",
-    "product-development": "/images/mushrooms-macro.jpg",
   };
 
   const products: ProductSeed[] = [
@@ -125,14 +117,15 @@ async function seed() {
   for (const p of products) {
     const slug = slugify(p.name);
     const categoryId = categoryMap[p.category];
-    const featuredImage = categoryImages[p.category];
+    const categoryFallback = CATEGORY_IMAGE_PATHS[p.category] ?? "/images/placeholder-product.svg";
+    const { featuredImage, images } = productImageUrls(slug, p.name, categoryFallback);
     const payload = {
       ...p,
       slug,
       category: categoryId,
       featured: p.featured ?? false,
       featuredImage,
-      images: [{ url: featuredImage, alt: p.name, order: 0 }],
+      images,
       shortDescription: p.shortDescription || `${p.name} — premium functional mushroom wellness product.`,
       description: `${p.name} from Fungtional Wellness. ${p.shortDescription || "Crafted with 100% full fruiting body mushrooms. No mycelium. No fillers."}`,
       warnings: DEFAULT_DISCLAIMER,
