@@ -66,24 +66,26 @@ const COPIES: Record<string, string> = {
   "function-mushroom-powder-marketing.jpg":
     "c__Users_admin_AppData_Roaming_Cursor_User_workspaceStorage_ebc5ffe806adaa3a2c95226e80d64433_images_WhatsApp_Image_2026-09-16_at_9.30.20_PM__3_-b71479f6-9d2b-4c10-b427-440b2348db03.jpg",
   "myco-dose.jpg":
-    "c__Users_admin_AppData_Roaming_Cursor_User_workspaceStorage_ebc5ffe806adaa3a2c95226e80d64433_images_WhatsApp_Image_2026-09-16_at_9.29.43_PM__9_-1355cc79-3692-4f51-9b7f-202505beced3.jpg",
+    "c__Users_admin_AppData_Roaming_Cursor_User_workspaceStorage_ebc5ffe806adaa3a2c95226e80d64433_images_image-263851e8-847c-43c0-840a-5d6f0557e77b.jpg",
   "myco-mist.jpg":
     "c__Users_admin_AppData_Roaming_Cursor_User_workspaceStorage_ebc5ffe806adaa3a2c95226e80d64433_images_image-b82e1a2b-ac89-422d-960e-88dc5ac7f256.jpg",
   "collection-hero.jpg":
-    "c__Users_admin_AppData_Roaming_Cursor_User_workspaceStorage_ebc5ffe806adaa3a2c95226e80d64433_images_WhatsApp_Image_2026-09-16_at_9.29.44_PM__8_-b7b1f251-fbca-48eb-9e53-22f5ae116890.jpg",
+    "c__Users_admin_AppData_Roaming_Cursor_User_workspaceStorage_ebc5ffe806adaa3a2c95226e80d64433_images_image-9f2dd226-d950-4db7-9fe2-f8d2dc56f869.jpg",
 };
 
 const CATEGORY_COPIES: Record<string, string> = {
   "mushroom-capsules.jpg":
-    "c__Users_admin_AppData_Roaming_Cursor_User_workspaceStorage_ebc5ffe806adaa3a2c95226e80d64433_images_WhatsApp_Image_2026-09-16_at_9.29.44_PM__14_-e4432287-c54a-4392-9764-20403bea7d0b.jpg",
+    "c__Users_admin_AppData_Roaming_Cursor_User_workspaceStorage_ebc5ffe806adaa3a2c95226e80d64433_images_image-09440039-98f1-456a-abb1-041724693360.jpg",
   "mushroom-oral-drops.jpg":
-    "c__Users_admin_AppData_Roaming_Cursor_User_workspaceStorage_ebc5ffe806adaa3a2c95226e80d64433_images_WhatsApp_Image_2026-09-16_at_9.29.44_PM__13_-046bfadb-0533-4fb5-8881-e497f5f39ddd.jpg",
+    "c__Users_admin_AppData_Roaming_Cursor_User_workspaceStorage_ebc5ffe806adaa3a2c95226e80d64433_images_image-ddfabcb3-fed4-4172-a528-f4ee983a40c7.jpg",
   "mushroom-powders.jpg":
-    "c__Users_admin_AppData_Roaming_Cursor_User_workspaceStorage_ebc5ffe806adaa3a2c95226e80d64433_images_WhatsApp_Image_2026-09-16_at_9.29.44_PM__3_-029a7507-0762-4fa7-b0b1-e285139684cf.jpg",
+    "c__Users_admin_AppData_Roaming_Cursor_User_workspaceStorage_ebc5ffe806adaa3a2c95226e80d64433_images_image-22e9a7e8-f7ec-4111-85f6-9febbd1e8e16.jpg",
   "beverages.jpg":
-    "c__Users_admin_AppData_Roaming_Cursor_User_workspaceStorage_ebc5ffe806adaa3a2c95226e80d64433_images_WhatsApp_Image_2026-09-16_at_9.29.43_PM__9_-1355cc79-3692-4f51-9b7f-202505beced3.jpg",
+    "c__Users_admin_AppData_Roaming_Cursor_User_workspaceStorage_ebc5ffe806adaa3a2c95226e80d64433_images_image-263851e8-847c-43c0-840a-5d6f0557e77b.jpg",
   "myco-mist.jpg":
     "c__Users_admin_AppData_Roaming_Cursor_User_workspaceStorage_ebc5ffe806adaa3a2c95226e80d64433_images_image-b82e1a2b-ac89-422d-960e-88dc5ac7f256.jpg",
+  "product-development.jpg":
+    "c__Users_admin_AppData_Roaming_Cursor_User_workspaceStorage_ebc5ffe806adaa3a2c95226e80d64433_images_image-9f2dd226-d950-4db7-9fe2-f8d2dc56f869.jpg",
 };
 
 function install(map: Record<string, string>, destDir: string) {

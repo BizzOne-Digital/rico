@@ -84,7 +84,7 @@ export const CATEGORY_IMAGE_PATHS: Record<string, string> = {
   "mushroom-powders": "/images/categories/mushroom-powders.jpg",
   beverages: "/images/categories/beverages.jpg",
   "myco-mist": "/images/categories/myco-mist.jpg",
-  "product-development": "/images/products/collection-hero.jpg",
+  "product-development": "/images/categories/product-development.jpg",
 };
 
 export function productImageUrls(slug: string, name: string, categoryFallback: string) {
