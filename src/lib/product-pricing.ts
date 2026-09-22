@@ -7,7 +7,6 @@ export const CATALOGUE_PRICES = {
   oralDrops: 65,
   powders: 60,
   mycoDose: 54,
-  mycoMist: 30,
 } as const;
 
 export const CATALOGUE_PRICE_LABELS = {
@@ -15,7 +14,6 @@ export const CATALOGUE_PRICE_LABELS = {
   oralDrops: "$65 each",
   powders: "$60 each",
   mycoDose: "$54",
-  mycoMist: "$30 each",
 } as const;
 
 /** Per-product slug → price (USD). Coming-soon items have no price. */
@@ -32,11 +30,6 @@ export const PRODUCT_PRICES: Record<string, number> = {
   "turkey-tail-mushroom-powder": CATALOGUE_PRICES.powders,
   "function-mushroom-powder": CATALOGUE_PRICES.powders,
   "myco-dose": CATALOGUE_PRICES.mycoDose,
-  "myco-mist-energy": CATALOGUE_PRICES.mycoMist,
-  "myco-mist-focus": CATALOGUE_PRICES.mycoMist,
-  "myco-mist-calm": CATALOGUE_PRICES.mycoMist,
-  "myco-mist-immune": CATALOGUE_PRICES.mycoMist,
-  "myco-mist-sleep": CATALOGUE_PRICES.mycoMist,
 };
 
 export function formatProductPrice(price: number, status?: ProductStatus | string): string {

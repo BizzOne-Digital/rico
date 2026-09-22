@@ -23,7 +23,6 @@ const CATALOGUE_PRICING = [
   { category: "Mushroom Oral Drops", price: CATALOGUE_PRICE_LABELS.oralDrops },
   { category: "Mushroom Powders", price: CATALOGUE_PRICE_LABELS.powders },
   { category: "Myco Dose", price: `${CATALOGUE_PRICE_LABELS.mycoDose} — 12 × 2 oz bottles` },
-  { category: "Myco Mist Oral Sprays", price: CATALOGUE_PRICE_LABELS.mycoMist },
 ];
 
 export default async function PricingPage() {
@@ -47,7 +46,7 @@ export default async function PricingPage() {
 
       <section className="bg-page content-on-dark mx-auto w-full min-w-0 max-w-7xl px-4 py-8 sm:px-6 sm:py-10">
         <div className="mb-10 grid gap-4 sm:grid-cols-3">
-          {[PAGE_IMAGES.capsules, PAGE_IMAGES.oralDrops, PAGE_IMAGES.mycoMist].map((img, i) => (
+          {[PAGE_IMAGES.capsules, PAGE_IMAGES.oralDrops, PAGE_IMAGES.powder].map((img, i) => (
             <div key={i} className="relative aspect-[16/10] overflow-hidden rounded-xl">
               <Image src={img} alt="Product pricing" fill sizes="400px" className="object-cover" />
             </div>

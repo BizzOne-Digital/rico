@@ -3,7 +3,11 @@
 import { useState } from "react";
 import { ProductImage } from "@/components/ui/ProductImage";
 import { Badge } from "@/components/ui/Badge";
-import { productImageObjectPosition } from "@/lib/product-images";
+import {
+  PRODUCT_IMAGE_PLACEHOLDER,
+  productImageObjectPosition,
+  productUsesPlaceholder,
+} from "@/lib/product-images";
 import { formatProductPrice } from "@/lib/product-pricing";
 import { formatPriceDollars } from "@/lib/utils";
 import { AddToCartButton } from "@/components/shop/AddToCartButton";
@@ -35,15 +39,18 @@ interface ProductDetailClientProps {
 }
 
 export function ProductDetailClient({ product, disclaimer }: ProductDetailClientProps) {
-  const images = product.images?.length
-    ? [...product.images].sort((a, b) => a.order - b.order)
-    : product.featuredImage
-      ? [{ url: product.featuredImage, alt: product.name, order: 0 }]
-      : [];
+  const isPlaceholder = productUsesPlaceholder(product.status);
+  const images = isPlaceholder
+    ? [{ url: PRODUCT_IMAGE_PLACEHOLDER, alt: product.name, order: 0 }]
+    : product.images?.length
+      ? [...product.images].sort((a, b) => a.order - b.order)
+      : product.featuredImage
+        ? [{ url: product.featuredImage, alt: product.name, order: 0 }]
+        : [];
 
   const [activeImage, setActiveImage] = useState(0);
   const [quantity, setQuantity] = useState(1);
-  const mainImage = images[activeImage]?.url || product.featuredImage || "";
+  const mainImage = images[activeImage]?.url || PRODUCT_IMAGE_PLACEHOLDER;
   const objectPosition = productImageObjectPosition(product.slug);
   const canAdd = product.status === "active";
 
@@ -58,10 +65,11 @@ export function ProductDetailClient({ product, disclaimer }: ProductDetailClient
               fill
               sizes="(max-width: 1024px) 100vw, 50vw"
               objectPosition={objectPosition}
+              className={isPlaceholder ? "object-contain p-10 opacity-90" : undefined}
               priority
             />
           </div>
-          {images.length > 1 && (
+          {!isPlaceholder && images.length > 1 && (
             <div className="mt-4 flex gap-3 overflow-x-auto scrollbar-hide">
               {images.map((img, i) => (
                 <button

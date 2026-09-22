@@ -49,8 +49,7 @@ async function seed() {
     { name: "Mushroom Oral Drops", slug: "mushroom-oral-drops", displayOrder: 2, image: CATEGORY_IMAGE_PATHS["mushroom-oral-drops"] },
     { name: "Mushroom Powders", slug: "mushroom-powders", displayOrder: 3, image: CATEGORY_IMAGE_PATHS["mushroom-powders"] },
     { name: "Beverages", slug: "beverages", displayOrder: 4, image: CATEGORY_IMAGE_PATHS.beverages },
-    { name: "Myco Mist", slug: "myco-mist", displayOrder: 5, image: CATEGORY_IMAGE_PATHS["myco-mist"] },
-    { name: "Product Development", slug: "product-development", displayOrder: 6, image: CATEGORY_IMAGE_PATHS["product-development"] },
+    { name: "Product Development", slug: "product-development", displayOrder: 5, image: CATEGORY_IMAGE_PATHS["product-development"] },
   ];
 
   const categoryMap: Record<string, mongoose.Types.ObjectId> = {};
@@ -101,12 +100,6 @@ async function seed() {
     { name: "Function Mushroom Powder", category: "mushroom-powders", price: CATALOGUE_PRICES.powders, size: "100 g", npn: "80124065", format: "Powder", benefits: ["Overall Wellness", "Immunity", "Energy", "Gut Health", "Focus", "Stress Support"], ingredients: "Cordyceps, Lion's Mane, Shiitake, Reishi, Turkey Tail and Ashwagandha Root blend", status: "active", featured: true, stock: 75 },
     // Beverages — $54
     { name: "Myco Dose", category: "beverages", price: CATALOGUE_PRICES.mycoDose, size: "12 × 2 oz bottles", format: "Beverage", npn: "80138825", benefits: ["Energy", "Focus", "Stress Support", "Immunity", "Recovery"], shortDescription: "Orange Creamsicle flavored performance beverage.", status: "active", featured: true, stock: 60 },
-    // Myco Mist Oral Sprays — $30 each
-    { name: "Myco Mist Energy", category: "myco-mist", price: CATALOGUE_PRICES.mycoMist, format: "Oral Spray", benefits: ["Energy", "Overall Wellness"], shortDescription: "Concentrated oral spray for energy support.", status: "active", stock: 40 },
-    { name: "Myco Mist Focus", category: "myco-mist", price: CATALOGUE_PRICES.mycoMist, format: "Oral Spray", benefits: ["Focus", "Overall Wellness"], shortDescription: "Concentrated oral spray for focus support.", status: "active", featured: true, stock: 40 },
-    { name: "Myco Mist Calm", category: "myco-mist", price: CATALOGUE_PRICES.mycoMist, format: "Oral Spray", benefits: ["Stress Support", "Overall Wellness"], shortDescription: "Concentrated oral spray for calm support.", status: "active", stock: 40 },
-    { name: "Myco Mist Immune", category: "myco-mist", price: CATALOGUE_PRICES.mycoMist, format: "Oral Spray", benefits: ["Immunity", "Overall Wellness"], shortDescription: "Concentrated oral spray for immune support.", status: "active", stock: 40 },
-    { name: "Myco Mist Sleep", category: "myco-mist", price: CATALOGUE_PRICES.mycoMist, format: "Oral Spray", benefits: ["Stress Support", "Overall Wellness"], shortDescription: "Concentrated oral spray for sleep support.", status: "active", stock: 40 },
     // Products Under Development
     { name: "Mushroom Coffee", category: "product-development", price: 0, format: "Beverage", benefits: ["Energy", "Focus"], shortDescription: "Product under development", status: "coming_soon", stock: 0, trackInventory: false },
     { name: "Immune Plus+ Powder", category: "product-development", price: 0, format: "Powder", benefits: ["Immunity"], shortDescription: "Product under development", status: "coming_soon", stock: 0, trackInventory: false },
@@ -118,7 +111,7 @@ async function seed() {
     const slug = slugify(p.name);
     const categoryId = categoryMap[p.category];
     const categoryFallback = CATEGORY_IMAGE_PATHS[p.category] ?? "/images/placeholder-product.svg";
-    const { featuredImage, images } = productImageUrls(slug, p.name, categoryFallback);
+    const { featuredImage, images } = productImageUrls(slug, p.name, categoryFallback, p.status);
     const payload = {
       ...p,
       slug,
@@ -138,11 +131,20 @@ async function seed() {
     displayOrder += 1;
   }
 
-  // Archive legacy combined Myco Mist listing if present
-  await Product.updateOne(
-    { slug: "myco-mist-concentrated-oral-spray" },
+  const removedMycoMistSlugs = [
+    "myco-mist-energy",
+    "myco-mist-focus",
+    "myco-mist-calm",
+    "myco-mist-immune",
+    "myco-mist-sleep",
+    "myco-mist-concentrated-oral-spray",
+  ];
+  await Product.updateMany(
+    { slug: { $in: removedMycoMistSlugs } },
     { $set: { status: "archived" } }
   );
+  await ProductCategory.deleteOne({ slug: "myco-mist" });
+  await FAQ.deleteOne({ question: "What are Myco Mist oral sprays?" });
 
   // Force-sync catalogue prices on all active products
   for (const [slug, price] of Object.entries(PRODUCT_PRICES)) {
@@ -248,7 +250,7 @@ async function seed() {
     {
       question: "How should I store mushroom powders and capsules?",
       answer:
-        "Store in a cool, dry place away from direct sunlight. Keep the lid tightly closed on powders to maintain freshness. Oral drops and Myco Mist sprays should be stored at room temperature. Do not use if the seal is broken.",
+        "Store in a cool, dry place away from direct sunlight. Keep the lid tightly closed on powders to maintain freshness. Oral drops should be stored at room temperature. Do not use if the seal is broken.",
       category: "Usage",
       displayOrder: 8,
     },
@@ -258,13 +260,6 @@ async function seed() {
         "My Focus Oral Drops are commonly taken in the morning or early afternoon. My Fuel Oral Drops fit well before activity or mid-day. My Vitality Oral Drops can be taken any time of day. Follow the label directions and adjust timing to what works best for your schedule.",
       category: "Usage",
       displayOrder: 9,
-    },
-    {
-      question: "What are Myco Mist oral sprays?",
-      answer:
-        "Myco Mist is a line of concentrated oral sprays available in five varieties: Energy, Focus, Calm, Immune and Sleep. Each spray is designed for quick, on-the-go use. They are priced at $30 each and can be used as a standalone product or alongside your daily mushroom routine.",
-      category: "Products",
-      displayOrder: 10,
     },
     {
       question: "How long does shipping take?",
@@ -378,7 +373,7 @@ async function seed() {
       name: "Chris M.",
       role: "Wellness assessment client",
       content:
-        "The wellness assessment helped me stop guessing which products to buy. The team mapped out a simple routine with Function Mushroom Powder and Myco Mist Focus that actually fits my busy schedule.",
+        "The wellness assessment helped me stop guessing which products to buy. The team mapped out a simple routine with Function Mushroom Powder and My Focus Oral Drops that actually fits my busy schedule.",
       rating: 5,
       active: true,
     },

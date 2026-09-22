@@ -3,7 +3,11 @@
 import Link from "next/link";
 import { Modal } from "@/components/ui/Modal";
 import { ProductImage } from "@/components/ui/ProductImage";
-import { productImageObjectPosition } from "@/lib/product-images";
+import {
+  productImageObjectPosition,
+  productUsesPlaceholder,
+  resolveProductFeaturedImage,
+} from "@/lib/product-images";
 import { formatProductPrice } from "@/lib/product-pricing";
 import { AddToCartButton } from "./AddToCartButton";
 import type { ShopProduct } from "./ProductCard";
@@ -16,14 +20,22 @@ interface QuickViewProps {
 
 export function QuickView({ product, open, onClose }: QuickViewProps) {
   if (!product) return null;
-  const image = product.featuredImage || product.images?.[0]?.url || "";
+  const image = resolveProductFeaturedImage(product);
+  const isPlaceholder = productUsesPlaceholder(product.status);
   const objectPosition = productImageObjectPosition(product.slug);
 
   return (
     <Modal open={open} onClose={onClose} title={product.name}>
       <div className="grid gap-6 md:grid-cols-2">
         <div className="relative aspect-square overflow-hidden rounded-xl bg-obsidian">
-          <ProductImage src={image} alt={product.name} fill sizes="400px" objectPosition={objectPosition} />
+          <ProductImage
+            src={image}
+            alt={product.name}
+            fill
+            sizes="400px"
+            objectPosition={objectPosition}
+            className={isPlaceholder ? "object-contain p-10 opacity-90" : undefined}
+          />
         </div>
         <div>
           <p className="text-2xl font-semibold text-electric">

@@ -5,7 +5,6 @@ export const PAGE_IMAGES = {
   capsules: CATEGORY_IMAGE_PATHS["mushroom-capsules"],
   oralDrops: CATEGORY_IMAGE_PATHS["mushroom-oral-drops"],
   powder: CATEGORY_IMAGE_PATHS["mushroom-powders"],
-  mycoMist: CATEGORY_IMAGE_PATHS["myco-mist"],
   mycoDose: CATEGORY_IMAGE_PATHS.beverages,
   mushroomsMacro: CATEGORY_IMAGE_PATHS["product-development"],
   wellnessResearch: "/images/wellness-research.jpg",

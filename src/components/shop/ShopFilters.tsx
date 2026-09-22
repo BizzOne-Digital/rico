@@ -78,7 +78,6 @@ export function ShopFilters({ categories }: ShopFiltersProps) {
           { value: "Oral Drops", label: "Oral Drops" },
           { value: "Powder", label: "Powder" },
           { value: "Beverage", label: "Beverage" },
-          { value: "Concentrated oral spray", label: "Myco Mist" },
         ]}
         value={searchParams.get("format") || ""}
         onChange={(e) => updateParams("format", e.target.value)}

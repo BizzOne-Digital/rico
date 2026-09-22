@@ -1,8 +1,10 @@
+/** Empty container silhouette for coming-soon listings (no product photography). */
+export const PRODUCT_IMAGE_PLACEHOLDER = "/images/placeholder-coming-soon.svg";
+
 /** Client product photography — paths under /public */
 export type ProductImageEntry = {
   featured: string;
   gallery?: string[];
-  /** Crop focal point when featured is the shared Myco Mist lineup */
   objectPosition?: string;
 };
 
@@ -54,28 +56,6 @@ export const PRODUCT_IMAGES: Record<string, ProductImageEntry> = {
   "myco-dose": {
     featured: "/images/products/myco-dose.jpg",
   },
-  "myco-mist-energy": {
-    featured: "/images/products/myco-mist-energy.jpg",
-    gallery: ["/images/products/myco-mist.jpg"],
-  },
-  "myco-mist-focus": {
-    featured: "/images/products/myco-mist-focus.jpg",
-    gallery: ["/images/products/myco-mist.jpg"],
-  },
-  "myco-mist-calm": {
-    featured: "/images/products/myco-mist-calm.jpg",
-    gallery: ["/images/products/myco-mist.jpg"],
-  },
-  "myco-mist-immune": {
-    featured: "/images/products/myco-mist.jpg",
-    objectPosition: "68% 42%",
-    gallery: ["/images/products/myco-mist.jpg"],
-  },
-  "myco-mist-sleep": {
-    featured: "/images/products/myco-mist.jpg",
-    objectPosition: "90% 48%",
-    gallery: ["/images/products/myco-mist.jpg"],
-  },
 };
 
 export const CATEGORY_IMAGE_PATHS: Record<string, string> = {
@@ -83,11 +63,34 @@ export const CATEGORY_IMAGE_PATHS: Record<string, string> = {
   "mushroom-oral-drops": "/images/categories/mushroom-oral-drops.jpg",
   "mushroom-powders": "/images/categories/mushroom-powders.jpg",
   beverages: "/images/categories/beverages.jpg",
-  "myco-mist": "/images/categories/myco-mist.jpg",
   "product-development": "/images/categories/product-development.jpg",
 };
 
-export function productImageUrls(slug: string, name: string, categoryFallback: string) {
+export function productUsesPlaceholder(status?: string): boolean {
+  return status === "coming_soon";
+}
+
+export function resolveProductFeaturedImage(product: {
+  status?: string;
+  featuredImage?: string | null;
+  images?: { url: string }[];
+}): string {
+  if (productUsesPlaceholder(product.status)) return PRODUCT_IMAGE_PLACEHOLDER;
+  return product.featuredImage || product.images?.[0]?.url || PRODUCT_IMAGE_PLACEHOLDER;
+}
+
+export function productImageUrls(
+  slug: string,
+  name: string,
+  categoryFallback: string,
+  status?: string
+) {
+  if (productUsesPlaceholder(status)) {
+    return {
+      featuredImage: PRODUCT_IMAGE_PLACEHOLDER,
+      images: [{ url: PRODUCT_IMAGE_PLACEHOLDER, alt: name, order: 0 }],
+    };
+  }
   const entry = PRODUCT_IMAGES[slug];
   const featured = entry?.featured ?? categoryFallback;
   const urls = [featured, ...(entry?.gallery ?? [])];

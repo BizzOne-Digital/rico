@@ -71,7 +71,7 @@ const PROCESS = [
     step: "04",
     title: "Deliver",
     description:
-      "From capsules to Myco Dose beverages and Myco Mist sprays — every format is designed for convenience without compromising quality.",
+      "From capsules to Myco Dose beverages — every format is designed for convenience without compromising quality.",
   },
 ];
 
@@ -103,13 +103,6 @@ const PRODUCT_FORMATS = [
     description: "Orange Creamsicle performance beverage — 12 × 2 oz bottles per pack.",
     href: "/shop?category=beverages",
     price: CATALOGUE_PRICE_LABELS.mycoDose,
-  },
-  {
-    image: PAGE_IMAGES.mycoMist,
-    title: "Myco Mist",
-    description: "Concentrated oral sprays in Energy, Focus, Calm, Immune and Sleep.",
-    href: "/shop?category=myco-mist",
-    price: CATALOGUE_PRICE_LABELS.mycoMist,
   },
   {
     image: PAGE_IMAGES.wellnessResearch,
@@ -150,7 +143,7 @@ export default async function AboutPage() {
           </p>
           <p>
             From Cordyceps and Lion&apos;s Mane capsules to alcohol-free oral drops, versatile
-            powders, Myco Dose beverages and Myco Mist sprays, every product is rooted in the same
+            powders, and Myco Dose beverages, every product is rooted in the same
             promise: <strong className="font-medium text-warm-white">100% full fruiting body mushrooms</strong> —
             no mycelium, no fillers.
           </p>
